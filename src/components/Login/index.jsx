@@ -4,6 +4,8 @@ import { MdOutlineMail } from "react-icons/md";
 import { IoEnterOutline } from "react-icons/io5";
 import { LuConciergeBell } from "react-icons/lu";
 import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
+
 
 export default function Login() {
     const submitFrom = () => {
@@ -57,11 +59,11 @@ export default function Login() {
                     <Icon>
                         <LuConciergeBell />
                     </Icon>
-                    <div>Garçom</div>
+                    <div>
+                        <div>Garçom</div>
+                    </div>
                 </Waiter>
-
                 <TitleData>É funcionario? faça login</TitleData>
-
                 <Waiter>
                     <Icon>
                         <FaGoogle />
@@ -69,6 +71,8 @@ export default function Login() {
                     <div>Google</div>
                 </Waiter>
             </DivButtons>
+            <Link href="/Pedidos">Pedidos</Link>
+            <Link href="/Cadastro">Cadastro</Link>
         </DivLogin>
     )
 }

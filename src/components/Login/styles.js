@@ -91,9 +91,11 @@ export const Button = styled.button`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  div {
-    padding-left: 9rem;
+  span {
+    position: sticky;
+    right: 200rem;
   }
 `
 

@@ -1,6 +1,7 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import Cadastro from "@/components/Pedidos/CadastroPedidos";
 import Login from "@/components/Login";
+import Pedidos from "@/components/Pedidos/RenderPedidos";
+import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -8,7 +9,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Login />
-      {/* <div>
+      <div>
         <h3>Estrutura do projeto:</h3>
         <ul>
           <h3>FULL MOBILE</h3>
@@ -37,7 +38,9 @@ export default function Home() {
             </ul>
           </li>
         </ul>
-      </div> */}
+      </div>
+      <span>Geral que eu preciso fazer: ROUTER</span>
+      <Cadastro />
     </main>
   );
 }
