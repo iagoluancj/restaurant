@@ -71,8 +71,8 @@ export default function Login() {
                     <div>Google</div>
                 </Waiter>
             </DivButtons>
-            <Link href="/Pedidos">Pedidos</Link>
-            <Link href="/Cadastro">Cadastro</Link>
+            <Link href="/RenderPedidos">Pedidos</Link>
+            <Link href="/CadastroPedidos">Cadastro</Link>
         </DivLogin>
     )
 }
