@@ -3,14 +3,24 @@ import Login from "@/components/Login";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import RenderPedidos from "./RenderPedidos";
+import Client from "./Client";
+import Cozinha from "./Cozinha";
+import Garcom from "./Garcom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-      <>
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-          <Login />
+    <>
+      <GoogleOAuthProvider clientId="899672257371-tm1dmsi6okuodmr0h2garnu6f1h7fjrj.apps.googleusercontent.com">.
+      <Login />
+      {/* <Client />
+      <p>AAAAAAAAAAAAAAAA</p>
+      <Garcom />
+      <p>AAAAAAAAAAAAAAAA</p>
+      <Cozinha /> */}
+      {/* <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <div>
             <h3>Estrutura do projeto:</h3>
             <ul>
@@ -43,7 +53,8 @@ export default function Home() {
           </div>
           <span>Geral que eu preciso fazer: ROUTER</span>
         </main>
-        <RenderPedidos></RenderPedidos>
-      </>
+        <RenderPedidos></RenderPedidos> */}
+        </GoogleOAuthProvider>
+    </>
   );
 }

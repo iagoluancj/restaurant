@@ -53,6 +53,7 @@ export const InfoData = styled.div`
 export const TitleData = styled.span`
   font-size: 20px;
   font-weight: 400;
+  margin-top: 2rem;
 
   span {
     font-weight: 100;
@@ -84,6 +85,7 @@ export const Button = styled.button`
   height: 50px;
   border-radius: 5px;
   color: #5b5859;
+
   border: 1px #B1AFAF solid;
 
   font-size: 20px;
@@ -92,10 +94,23 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .4s;
 
   span {
     position: sticky;
-    right: 200rem;
+    right: 100rem;
+    transition: .4s;
+  }
+
+  &:focus {
+    transition: .4s;
+    div {
+      transform: scale(1.1);
+      transition: .4s;
+    }
+  }
+  &:hover {
+    cursor: pointer;
   }
 `
 
@@ -108,14 +123,32 @@ export const SubmitAcess = styled(Button)`
     color: white;
     margin-bottom: 1px;
   }
+
+  &:focus {
+    color: #000;
+    background-color: #fff;
+    border: 1px #CE3246 solid;
+    transition: .2s;
+    span {
+      color: #000;
+      transition: .2s;
+    }
+  }
 `
 
 export const Waiter = styled(Button)`
   color: #5b5859;
   border: 1px #CE3246 solid;
+  /* color: ${props => (props.clicado ? '#000' : '#')}; */
 
   span {   
     font-size: 28px;
     margin-bottom: 1px;
+  }
+  &:focus {
+    color: #000;
+    div {
+      transition: .2s;
+    }
   }
 `

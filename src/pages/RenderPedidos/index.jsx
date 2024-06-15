@@ -7,21 +7,20 @@ export default function RenderPedidos() {
     return (
         <>
             <div>Fila de pedidos:</div>
-            Pedidos recebidos:
+            Pedidos recebidos (carrosel de pedidos simplificados aqui)
             <div>
                 {bears}
-                {/* <ul>
-                    {pedidos.map((pedido, index) => (
-                        <li key={index}>
-                            <p>Numero do Pedido: {pedido.numeroPedido}</p>
-                            <p>Status: {pedido.status}</p>
-                            <p>Nome do Cliente: {pedido.nomeCliente}</p>
-                            <p>Nome do Garçom: {pedido.nomeGarcom}</p>
-                            <p>Nome do Prato: {pedido.nomePrato}</p>
-                            <p>Observação: {pedido.observacao}</p>
-                        </li>
-                    ))}
-                </ul> */}
+                <ul>
+                    <li >
+                        <p>Numero do Pedido: { }</p>
+                        <p>Status: { }</p>
+                        <p>Nome do Cliente: { }</p>
+                        <p>Nome do Garçom: { }</p>
+                        <p>Nome do Prato: { }</p>
+                        <p>Observação: { }</p>
+                    </li>
+
+                </ul>
                 <Link href="/">Voltar</Link>
             </div>
         </>

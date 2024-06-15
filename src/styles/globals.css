@@ -5,4 +5,9 @@
 input:focus {
     outline: 1px solid #CE3246; 
     border: 1px #B1AFAF transparent;
-  }
+}
+
+button:focus {
+    outline: 1px solid #CE3246; 
+    border: 1px #B1AFAF transparent;
+}
