@@ -6,14 +6,14 @@ import RenderPedidos from "./RenderPedidos";
 import Client from "./Client";
 import Cozinha from "./Cozinha";
 import Garcom from "./Garcom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
-      <GoogleOAuthProvider clientId="899672257371-tm1dmsi6okuodmr0h2garnu6f1h7fjrj.apps.googleusercontent.com">.
+      {/* <GoogleOAuthProvider clientId="899672257371-tm1dmsi6okuodmr0h2garnu6f1h7fjrj.apps.googleusercontent.com">. */}
       <Login />
       {/* <Client />
       <p>AAAAAAAAAAAAAAAA</p>
@@ -54,7 +54,7 @@ export default function Home() {
           <span>Geral que eu preciso fazer: ROUTER</span>
         </main>
         <RenderPedidos></RenderPedidos> */}
-        </GoogleOAuthProvider>
+        {/* </GoogleOAuthProvider> */}
     </>
   );
 }

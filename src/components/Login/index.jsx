@@ -5,10 +5,10 @@ import { IoEnterOutline } from "react-icons/io5";
 import { LuConciergeBell } from "react-icons/lu";
 import { GrRestaurant } from "react-icons/gr";
 import { useState } from "react";
-import { useStore } from "@/stores/cartStore";
+import { useClient, useStore } from "@/stores/cartStore";
 
 export default function Login() {
-    const { logins, addLogin } = useStore(); // Obtém addLogin do estado Zustand
+    const { logins, addLogin, setRevistClient, revistClient } = useStore(); // Obtém addLogin do estado Zustand
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
@@ -24,8 +24,31 @@ export default function Login() {
         })
     }
 
+
+    // if (logins[0].tel === formData.telefone) {
+    //     
+
+
+    // }
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        logins.map((login) => {
+            // login[index].telefone === formData.telefone
+            // login[0].telefone
+            // setRevistClient([true])
+            // console.log(revistClient, 'telefone true')
+            if (formData.telefone === login.telefone) {
+                setRevistClient(true)
+                console.log(login.telefone, revistClient)
+            } else if ((formData.telefone !== login.telefone)) {
+                setRevistClient(false)
+                console.log(login.telefone, revistClient)
+            } else {
+                console.log('error')
+            }
+        })
 
         // data saved in global state, will be sent to database
         addLogin(formData);
@@ -80,8 +103,8 @@ export default function Login() {
                             <FiPhone />
                         </Icon>
                         <input
-                            type="text"
-                            placeholder="Informe o telefone"
+                            type="number"
+                            placeholder="Informe o telefone ex: (00) 0 0000-0000"
                             value={formData.telefone}
                             onChange={handleChange}
                             required='true'

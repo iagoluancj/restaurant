@@ -15,4 +15,7 @@ export const useStore = create((set) => ({
   increasePopulation: () => set((state) => ({ ...state, logins: state.logins})),
   removeAllBears: () => set({ logins: 0 }),
   updatedUsers: (newLogin) => set({ logins: newLogin }),
+
+  revistClient: false,
+  setRevistClient: (newSetRevistClient) => set({ revistClient: newSetRevistClient }),
 }))
