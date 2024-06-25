@@ -53,7 +53,7 @@ export const InfoData = styled.div`
 export const TitleData = styled.span`
   font-size: 20px;
   font-weight: 400;
-  margin-top: 2rem;
+  margin-top: 1.3rem;
 
   span {
     font-weight: 100;
@@ -91,6 +91,23 @@ export const Button = styled.button`
   font-size: 20px;
   font-weight: 400;
 
+  button {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    border-spacing: 0;
+    color: #26589F;
+    font-family: 'PT Sans Narrow',sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +136,7 @@ export const SubmitAcess = styled(Button)`
   color: #fff;
 
   span {
-    font-size: 28px;
+    font-size: 26px;
     color: white;
     margin-bottom: 1px;
   }

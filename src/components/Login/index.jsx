@@ -4,8 +4,9 @@ import { MdOutlineMail } from "react-icons/md";
 import { IoEnterOutline } from "react-icons/io5";
 import { LuConciergeBell } from "react-icons/lu";
 import { GrRestaurant } from "react-icons/gr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useClient, useStore } from "@/stores/cartStore";
+import Router from "next/router";
 
 export default function Login() {
     const { logins, addLogin, setRevistClient, revistClient } = useStore(); // Obtém addLogin do estado Zustand
@@ -24,26 +25,17 @@ export default function Login() {
         })
     }
 
-
-    // if (logins[0].tel === formData.telefone) {
-    //     
-
-
-    // }
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
         logins.map((login) => {
-            // login[index].telefone === formData.telefone
-            // login[0].telefone
-            // setRevistClient([true])
-            // console.log(revistClient, 'telefone true')
             if (formData.telefone === login.telefone) {
                 setRevistClient(true)
+                Router.push('/Client');
                 console.log(login.telefone, revistClient)
             } else if ((formData.telefone !== login.telefone)) {
                 setRevistClient(false)
+                Router.push('/Client');
                 console.log(login.telefone, revistClient)
             } else {
                 console.log('error')
@@ -60,6 +52,18 @@ export default function Login() {
             telefone: ''
         });
     };
+
+    // useEffect(() => {
+    //     // Verifique se o usuário está autenticado (por exemplo, usando o estado revistClient)
+    //     if (revistClient) {
+    //       // Se não estiver autenticado, redirecione para a página de login
+    //         Router.push('/Client'); // Substitua '/login' pela sua rota de login
+    //         setRevistClient(undefined)
+    //     } else {
+    //         Router.push('/Client'); // Substitua '/login' pela sua rota de login
+    //         setRevistClient(undefined)
+    //     }
+    //   }, [revistClient]);
 
     return (
         <DivLogin>
@@ -111,27 +115,20 @@ export default function Login() {
                             name="telefone" />
                     </IconAndInput>
                 </InfoData>
-                <button type="submit">Continuar acesso</button>
-            </DivInfoDatas>
-            <DivButtons>
-                <SubmitAcess>
+                <SubmitAcess type="submit">
                     <Icon>
                         <IoEnterOutline />
                     </Icon>
+                    <div>Continuar acesso</div>
                 </SubmitAcess>
-
+            </DivInfoDatas>
+            <DivButtons>
                 <Waiter>
                     <Icon>
                         <LuConciergeBell />
                     </Icon>
                     <div>Chamar Garçom</div>
                 </Waiter>
-                {/* <Waiter onClick={() => clickedLogin()} clicked={clicked}>
-                    <Icon>
-                        <FaGoogle />
-                    </Icon>
-                    <div>Sign in with Google 🚀</div>
-                </Waiter> */}
                 <TitleData>É funcionario?</TitleData>
                 <Waiter>
                     <Icon>
