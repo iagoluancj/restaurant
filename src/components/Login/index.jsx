@@ -16,6 +16,9 @@ export default function Login() {
         telefone: ''
     })
 
+    const [currentTelephone, setCurrentTelephone] = useState(false);
+
+
     // monitoring changes in the form
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -27,23 +30,19 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        Router.push('/Client');
 
-        logins.map((login) => {
-            if (formData.telefone === login.telefone) {
-                setRevistClient(true)
-                Router.push('/Client');
-                console.log(login.telefone, revistClient)
-            } else if ((formData.telefone !== login.telefone)) {
-                setRevistClient(false)
-                Router.push('/Client');
-                console.log(login.telefone, revistClient)
-            } else {
-                console.log('error')
-            }
-        })
 
-        // data saved in global state, will be sent to database
-        addLogin(formData);
+        // Lógica para decidir se salvar os dados ou não
+        if (currentTelephone) {
+            console.log('Telefone JÁ cadastrado');
+            setRevistClient(true)
+        } else {
+            // data not already present, safe to save
+            addLogin(formData);
+            console.log('Telefone NÃO cadastrado');
+            setRevistClient(false)
+        }
 
         // clear form
         setFormData({
@@ -51,19 +50,21 @@ export default function Login() {
             email: '',
             telefone: ''
         });
+
     };
 
-    // useEffect(() => {
-    //     // Verifique se o usuário está autenticado (por exemplo, usando o estado revistClient)
-    //     if (revistClient) {
-    //       // Se não estiver autenticado, redirecione para a página de login
-    //         Router.push('/Client'); // Substitua '/login' pela sua rota de login
-    //         setRevistClient(undefined)
-    //     } else {
-    //         Router.push('/Client'); // Substitua '/login' pela sua rota de login
-    //         setRevistClient(undefined)
-    //     }
-    //   }, [revistClient]);
+    useEffect(() => {
+        let telefoneJaCadastrado = false;
+
+        logins.forEach((login) => {
+            if (formData.telefone === login.telefone) {
+                telefoneJaCadastrado = true;
+            }
+        });
+
+        setCurrentTelephone(telefoneJaCadastrado);
+
+    }, [formData.telefone, logins]);
 
     return (
         <DivLogin>

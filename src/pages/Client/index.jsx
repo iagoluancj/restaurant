@@ -1,21 +1,25 @@
 import Cardapio from "@/components/Cardapio";
 import Cart from "@/components/Cart";
 import { useStore } from "@/stores/cartStore";
+import Router from "next/router";
 
 export default function Client() {
     const { revistClient } = useStore(); // Obtém addLogin do estado Zustand
 
+    const returnToLogin = () => {
+        Router.push('/');
+    }
 
     return (
         <>
             {
-                revistClient ? <span>Seja bem vindo</span> : <span>Olá de volta</span>
+                revistClient ? <span>Olá de volta</span> : <span>Seja bem vindo</span>
+                
             }
-            {}
-            {console.log(revistClient)}
             <Cardapio />
             <br />
             <Cart />
+            <button onClick={returnToLogin}>VOLTAR</button>
         </>
     )
 }
