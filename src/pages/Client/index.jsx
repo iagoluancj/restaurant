@@ -7,7 +7,7 @@ export default function Client() {
     const { revistClient } = useStore(); // Obtém addLogin do estado Zustand
 
     const returnToLogin = () => {
-        Router.push('/');
+        Router.push('/Login');
     }
 
     return (
@@ -19,7 +19,7 @@ export default function Client() {
             <Cardapio />
             <br />
             <Cart />
-            <button onClick={returnToLogin}>VOLTAR</button>
+            <button onClick={returnToLogin}>Sair</button>
         </>
     )
 }

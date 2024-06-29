@@ -16,8 +16,16 @@ export default function Login() {
         telefone: ''
     })
 
-    const [currentTelephone, setCurrentTelephone] = useState(false);
+    // const emails = [
+    //     'iago',
+    //     'iago2',
+    //     'seilá'
+    // ]
 
+    const [emailsFunc, setEmailsfunc] = useState(['iago', 'luan'])
+
+    const [funcionario, setFuncionario] = useState(false);
+    const [currentTelephone, setCurrentTelephone] = useState(false);
 
     // monitoring changes in the form
     const handleChange = (event) => {
@@ -28,6 +36,12 @@ export default function Login() {
         })
     }
 
+    if (funcionario) {
+        console.log('abrir modal', emailsFunc, funcionario)
+    } else {
+        console.log('erro mano', emailsFunc, funcionario)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         Router.push('/Client');
@@ -35,12 +49,10 @@ export default function Login() {
 
         // Lógica para decidir se salvar os dados ou não
         if (currentTelephone) {
-            console.log('Telefone JÁ cadastrado');
             setRevistClient(true)
         } else {
             // data not already present, safe to save
             addLogin(formData);
-            console.log('Telefone NÃO cadastrado');
             setRevistClient(false)
         }
 
@@ -55,16 +67,28 @@ export default function Login() {
 
     useEffect(() => {
         let telefoneJaCadastrado = false;
+        let funcionarioCadastrado = false
 
         logins.forEach((login) => {
             if (formData.telefone === login.telefone) {
                 telefoneJaCadastrado = true;
             }
-        });
+        })
 
+        emailsFunc.forEach((email) => {
+            if (email === formData.email) {
+                console.log(email, "console log emailsfunc useEffect")
+                funcionarioCadastrado = true;
+            }
+        })
+
+        // Preciso filtrar o emailsFunc, que é onde está armazenado os emails, 
+        // e comparar com o atual formDataEmail, e caso seja verdadeiro, ai sim colcar o funconario true
+
+        setFuncionario(funcionarioCadastrado)
         setCurrentTelephone(telefoneJaCadastrado);
 
-    }, [formData.telefone, logins]);
+    }, [formData.telefone, logins, emailsFunc, formData.email, funcionario]);
 
     return (
         <DivLogin>

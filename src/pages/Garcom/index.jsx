@@ -1,5 +1,5 @@
-import Login from "@/components/Login";
-import CadastroPedidos from "../CadastroPedidos";
+import Login from "@/pages/Login";
+import CadastroPedidos from "../../components/CadastroPedidos";
 import Cardapio from "@/components/Cardapio";
 import RenderPedidos from "../RenderPedidos";
 
