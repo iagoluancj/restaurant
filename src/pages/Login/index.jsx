@@ -7,6 +7,7 @@ import { GrRestaurant } from "react-icons/gr";
 import { useEffect, useState } from "react";
 import { useClient, useStore } from "@/stores/cartStore";
 import Router from "next/router";
+import ModalLogin from "@/components/ModalLogin";
 
 export default function Login() {
     const { logins, addLogin, setRevistClient, revistClient } = useStore(); // Obtém addLogin do estado Zustand
@@ -39,7 +40,7 @@ export default function Login() {
     if (funcionario) {
         console.log('abrir modal', emailsFunc, funcionario)
     } else {
-        console.log('erro mano', emailsFunc, funcionario)
+        console.log('NÃO FAZ NADA', emailsFunc, funcionario)
     }
 
     const handleSubmit = (event) => {
@@ -84,7 +85,6 @@ export default function Login() {
 
         // Preciso filtrar o emailsFunc, que é onde está armazenado os emails, 
         // e comparar com o atual formDataEmail, e caso seja verdadeiro, ai sim colcar o funconario true
-
         setFuncionario(funcionarioCadastrado)
         setCurrentTelephone(telefoneJaCadastrado);
 
@@ -162,6 +162,8 @@ export default function Login() {
                     <div>Funcionário</div>
                 </Waiter>
             </DivButtons>
+            
+            <ModalLogin />
             {/* <Link href="/RenderPedidos">Pedidos</Link>
             <Link href="/CadastroPedidos">Cadastro</Link> */}
         </DivLogin>
