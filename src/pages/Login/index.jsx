@@ -139,12 +139,6 @@ export default function Login() {
                     <div>Sou Funcionário</div>
                 </Waiter>
             </DivButtons>
-            <>
-                <form action="http://localhost:3001/enviar-token" method="POST">
-                    <input type="email" name="email" placeholder="Seu email" required />
-                    <button type="submit">Login funcionário</button>
-                </form>
-            </>
         </DivLogin>
     )
 }
