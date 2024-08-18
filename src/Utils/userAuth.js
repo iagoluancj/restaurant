@@ -10,6 +10,7 @@ function userAuth(Component) {
 
         useEffect(() => {
             const savedToken = localStorage.getItem('authToken');
+            // mexer nisso depois, apagar do local storage quando for deslogado. 
             if (savedToken) {
                 fetch(`http://localhost:3001/validar-token?token=${savedToken}`)
                     .then(response => response.json())
