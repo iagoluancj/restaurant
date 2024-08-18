@@ -12,10 +12,15 @@ import { create } from 'zustand'
 export const useStore = create((set) => ({
   logins: [],
   addLogin: (newLogin) => set((state) => ({ logins: [...state.logins, newLogin] })),
-  increasePopulation: () => set((state) => ({ ...state, logins: state.logins})),
+  increasePopulation: () => set((state) => ({ ...state, logins: state.logins })),
   removeAllBears: () => set({ logins: 0 }),
   updatedUsers: (newLogin) => set({ logins: newLogin }),
 
-  revistClient: false,
+  revistClient: '',
   setRevistClient: (newSetRevistClient) => set({ revistClient: newSetRevistClient }),
+
+  emailFuncionare: [
+    ['iago.luancj@gmail.com', 'Cozinha'],
+    ['iagoestudoslcj@gmail.com', 'Garcom'],
+  ],
 }))

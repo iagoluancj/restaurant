@@ -59,6 +59,7 @@ export const TitleData = styled.span`
     font-weight: 100;
     font-size: 12px;
     font-style: italic;
+    color: #CE3246;
   }
 `
 
@@ -168,4 +169,35 @@ export const Waiter = styled(Button)`
       transition: .2s;
     }
   }
+`
+
+export const IsFunctionare = styled.form`
+  width: 99%;
+  height: 50px;
+  border-radius: 5px;
+  color: #5b5859;
+
+  border: 1px #B1AFAF solid;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  color: #5b5859;
+  border: 1px #CE3246 solid;
+  /* color: ${props => (props.clicado ? '#000' : '#')}; */
+
+  span {   
+    font-size: 28px;
+    margin-bottom: 1px;
+  }
+  &:focus {
+    color: #000;
+    div {
+      transition: .2s;
+    }
+  }
+`
+
+export const Required = styled.span`
+  color: red;
 `

@@ -1,9 +1,9 @@
-import Login from "@/pages/Login";
-import CadastroPedidos from "../../components/CadastroPedidos";
+import CadastroPedidos from "@/components/CadastroPedidos";
 import Cardapio from "@/components/Cardapio";
-import RenderPedidos from "../RenderPedidos";
+import RenderPedidos from "../../components/RenderPedidos";
+import userAuth from "@/Utils/userAuth";
 
-export default function Garcom() {
+function Garcom() {
     return (
         <>
             <CadastroPedidos />
@@ -14,3 +14,5 @@ export default function Garcom() {
         </>
     )
 }
+
+export default userAuth(Garcom);

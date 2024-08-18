@@ -1,7 +1,7 @@
-import Login from "@/pages/Login";
-import RenderPedidos from "../RenderPedidos";
+import userAuth from "@/Utils/userAuth";
+import RenderPedidos from "../../components/RenderPedidos";
 
-export default function Cozinha() {
+function Cozinha() {
     return (
         <>
             <RenderPedidos />
@@ -10,3 +10,5 @@ export default function Cozinha() {
         </>
     )
 }
+
+export default userAuth(Cozinha);

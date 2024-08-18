@@ -5,29 +5,19 @@ import { IoEnterOutline } from "react-icons/io5";
 import { LuConciergeBell } from "react-icons/lu";
 import { GrRestaurant } from "react-icons/gr";
 import { useEffect, useState } from "react";
-import { useClient, useStore } from "@/stores/cartStore";
+import { useStore } from "@/stores/cartStore";
 import Router from "next/router";
 
 export default function Login() {
-    const { logins, addLogin, setRevistClient, revistClient } = useStore(); // Obtém addLogin do estado Zustand
+    const { logins, addLogin, setRevistClient } = useStore(); // Obtém addLogin do estado Zustand
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
         telefone: ''
     })
 
-    // const emails = [
-    //     'iago',
-    //     'iago2',
-    //     'seilá'
-    // ]
-
-    const [emailsFunc, setEmailsfunc] = useState(['iago', 'luan'])
-
-    const [funcionario, setFuncionario] = useState(false);
     const [currentTelephone, setCurrentTelephone] = useState(false);
 
-    // monitoring changes in the form
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -36,27 +26,17 @@ export default function Login() {
         })
     }
 
-    if (funcionario) {
-        console.log('abrir modal', emailsFunc, funcionario)
-    } else {
-        console.log('erro mano', emailsFunc, funcionario)
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         Router.push('/Client');
 
-
-        // Lógica para decidir se salvar os dados ou não
         if (currentTelephone) {
-            setRevistClient(true)
+            setRevistClient(0)
         } else {
-            // data not already present, safe to save
             addLogin(formData);
-            setRevistClient(false)
+            setRevistClient(1)
         }
 
-        // clear form
         setFormData({
             nome: '',
             email: '',
@@ -65,9 +45,18 @@ export default function Login() {
 
     };
 
+    const submitEmail = () => {
+        const response = fetch('http://localhost:3001/enviar-token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify({ email: 'iago.luancj@gmail.com' }), 
+        });
+    }
+
     useEffect(() => {
         let telefoneJaCadastrado = false;
-        let funcionarioCadastrado = false
 
         logins.forEach((login) => {
             if (formData.telefone === login.telefone) {
@@ -75,20 +64,9 @@ export default function Login() {
             }
         })
 
-        emailsFunc.forEach((email) => {
-            if (email === formData.email) {
-                console.log(email, "console log emailsfunc useEffect")
-                funcionarioCadastrado = true;
-            }
-        })
-
-        // Preciso filtrar o emailsFunc, que é onde está armazenado os emails, 
-        // e comparar com o atual formDataEmail, e caso seja verdadeiro, ai sim colcar o funconario true
-
-        setFuncionario(funcionarioCadastrado)
         setCurrentTelephone(telefoneJaCadastrado);
 
-    }, [formData.telefone, logins, emailsFunc, formData.email, funcionario]);
+    }, [formData.telefone, logins, formData.email]);
 
     return (
         <DivLogin>
@@ -136,7 +114,7 @@ export default function Login() {
                             placeholder="Informe o telefone ex: (00) 0 0000-0000"
                             value={formData.telefone}
                             onChange={handleChange}
-                            required='true'
+                            required={true}
                             name="telefone" />
                     </IconAndInput>
                 </InfoData>
@@ -154,16 +132,22 @@ export default function Login() {
                     </Icon>
                     <div>Chamar Garçom</div>
                 </Waiter>
-                <TitleData>É funcionario?</TitleData>
-                <Waiter>
+                <Waiter onClick={submitEmail}>
                     <Icon>
                         <GrRestaurant />
                     </Icon>
-                    <div>Funcionário</div>
+                    <div>Sou Funcionário</div>
                 </Waiter>
             </DivButtons>
-            {/* <Link href="/RenderPedidos">Pedidos</Link>
-            <Link href="/CadastroPedidos">Cadastro</Link> */}
+            <>
+                <form action="http://localhost:3001/enviar-token" method="POST">
+                    <input type="email" name="email" placeholder="Seu email" required />
+                    <button type="submit">Login funcionário</button>
+                </form>
+            </>
         </DivLogin>
     )
 }
+
+// PROXIMOS PASSOS:
+// - Ajustar formulário para o campo correto. 
